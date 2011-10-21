@@ -1,0 +1,49 @@
+#!/system/bin/sh
+
+load_usb()
+{
+	# Inserting dummy module to enable usb1 port
+	insmod /system/bin/usb/g_zero.ko
+
+	# Enable Android gadgets functionality on usb0 port
+	echo 0       > /sys/class/android_usb/android0/enable
+	echo adb,acm > /sys/class/android_usb/android0/functions
+	echo 2       > /sys/class/android_usb/android0/f_acm/instances
+	echo 1       > /sys/class/android_usb/android0/enable
+
+	# Simulating usb0 disconnect/connect
+	echo c > /proc/driver/musb_hdrc.0
+	echo C > /proc/driver/musb_hdrc.0
+
+	return 0;
+}
+
+unload_usb()
+{
+if rmmod g_zero; then :; else return 1; fi
+	return 0;
+}
+
+# Deal with the type of invocation we get.
+#
+case "$1" in
+"start")
+	load_usb
+	;;
+stop)
+	if ! unload_usb; then
+		echo "Couldn't unload USB modules" >&2;
+	fi
+	;;
+reload|restart)
+	if unload_usb; then
+		load_usb
+	else
+		echo "Couldn't unload USB modules" >&2;
+	fi
+	;;
+*)
+	echo "$0: unknown argument $1." >&2;
+	;;
+esac
+
