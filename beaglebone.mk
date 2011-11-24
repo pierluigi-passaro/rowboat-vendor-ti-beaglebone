@@ -4,6 +4,7 @@ PRODUCT_PACKAGES := \
 	GeneralRunner \
 	EvilSkull \
 	Vase \
+        androidvncserver \
 	lights.$(TARGET_PRODUCT) \
 	alsa.$(TARGET_PRODUCT)
 
