@@ -2,7 +2,7 @@ PRODUCT_PACKAGES := \
 	ApiDemos      \
 	SoundRecorder \
 	GeneralRunner \
-	EvilSkull \
+	FileManager-1.1.6 \
 	Vase \
         androidvncserver \
 	lights.$(TARGET_PRODUCT) \
