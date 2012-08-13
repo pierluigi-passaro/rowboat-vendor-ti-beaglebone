@@ -19,6 +19,9 @@ PRODUCT_COPY_FILES := \
 	device/ti/beaglebone/init.rc:root/init.rc \
 	device/ti/beaglebone/vold.fstab:system/etc/vold.fstab \
 
+# KeyPads
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	hwui.render_dirty_regions=false
