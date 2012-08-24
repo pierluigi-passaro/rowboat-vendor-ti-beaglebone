@@ -242,8 +242,10 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_rmem_max
     chown root radio /proc/cmdline
 
-# PWM-Backlight for display brightness
+# PWM-Backlight for display brightness on LCD7 Cape
     chmod 0666 /sys/class/backlight/pwm-backlight/brightness
+# PWM-Backlight for display brightness on LCD3 Cape
+    chmod 0666 /sys/class/backlight/tps65217-bl/brightness
 
 # Create directory for dhcpcd data
     mkdir /data/misc/dhcp 0770 dhcp dhcp

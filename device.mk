@@ -56,4 +56,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	androidvncserver
 
+# Backlight HAL (liblights)
+PRODUCT_PACKAGES += \
+	lights.beaglebone
+
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
